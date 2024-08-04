@@ -45,7 +45,7 @@ Gcd(R2,R3);
 Gcd(R2,R5);
 
 
-G<g> := ext<Z|t^2 + 2*t + 12>;
+G<g> := ext<Z| t^2 + 2*t + 12>;
 
 F<x> := PolynomialRing(G);
 
@@ -64,6 +64,6 @@ IsIsomorphicHyperellipticCurves(h,hm);
 ScaledIgusaInvariants(h);
 ScaledIgusaInvariants(hm);
 
-TwistsFromIgusaInvariants([12*Z.1, 12, 5, 5, 3]);
+TwistsFromIgusaInvariants([ 12*Z.1 , 12 , 5 , 5 , 3 ]);
 
 
