@@ -2,8 +2,6 @@ Q := RationalField();
 TF<s> := FunctionField(Q);
 
 
-
-
 E := EllipticCurveFromjInvariant((s+27)*(s+3)^3/s) ;
 E;
 a1:=1;
@@ -18,8 +16,6 @@ b4:=a1*a3+2*a4;
 b6:=a3^2+4*a6;
 
 F := EllipticCurve([0,b2/4*(s^2 + 18*s - 27),0,b4/2*(s^2 + 18*s - 27)^2,b6/4*(s^2 + 18*s - 27)^3]);
-F;
-jInvariant(F);
 IsTwist(E,F);
 Discriminant(F);
 
