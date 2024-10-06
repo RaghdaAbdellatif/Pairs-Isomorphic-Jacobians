@@ -1,0 +1,136 @@
+Z := Integers();
+
+Q := RationalField();
+
+I := hom< Q -> Z | > ;
+
+F<t,s>:= PolynomialRing(Q,2);
+
+P<x> := PolynomialRing(F);
+
+ht:=(2*x^2-t)*(4*t^2*x^4+4*(t^2+t+1)*x^2+1);;
+
+hs:=(4*x^2 + s)*(16*s^4*x^4 + 8*(2*s^4 - 4*s^3 + 5*s^2 - 4*s + 2)*x^2 + 1);
+
+
+j2t  := ScaledIgusaInvariants(ht)[1];
+j4t  := ScaledIgusaInvariants(ht)[2];
+j6t  := ScaledIgusaInvariants(ht)[3];
+j10t := ScaledIgusaInvariants(ht)[5];
+
+j2s  := ScaledIgusaInvariants(hs)[1];
+j4s  := ScaledIgusaInvariants(hs)[2];
+j6s  := ScaledIgusaInvariants(hs)[3];
+j10s := ScaledIgusaInvariants(hs)[5]; 
+
+
+
+R2:=j4t*j2s^2-j4s*j2t^2;
+
+
+R3:=j6t*j2s^3-j6s*j2t^3;
+
+
+R5:=j10t*j2s^5-j10s*j2t^5;
+
+
+
+R25:=j4t^5*j10s^2-j4s^5*j10t^2;
+
+
+
+
+m:=LeadingCoefficient(Resultant(R2,R25,s));
+n:=LeadingCoefficient(Resultant(R3,R5,s));
+Factorization(Gcd(I(m),I(n)));
+
+
+Factorization(Gcd(Resultant(R2,R25,s),Resultant(R3,R5,s)));
+
+Kr<r> :=PolynomialRing(Q);
+Kr0<r0> := ext<Q|r^2 - 9/8*r + 1>;
+
+Fs<s> := PolynomialRing(Kr0);
+
+Factorization(Gcd(Evaluate(R2,[r0,s]), Evaluate(R25,[r0,s])));
+P<x> := PolynomialRing(Kr0);
+
+s0:=-( 1/5*(-6*r0 + 4));
+s:=s0;
+t:=r0;
+
+ht:=(2*x^2-t)*(4*t^2*x^4+4*(t^2+t+1)*x^2+1);;
+
+hs:=(4*x^2 + s)*(16*s^4*x^4 + 8*(2*s^4 - 4*s^3 + 5*s^2 - 4*s + 2)*x^2 + 1);
+
+
+IsIsomorphicHyperellipticCurves(ht,hs:geometric:=true);
+
+
+Kr<r> :=PolynomialRing(Q);
+Kr0<r0> := ext<Q|r^2 + 9/8*r + 1>;
+
+Fs<s> := PolynomialRing(Kr0);
+
+Factorization(Gcd(Evaluate(R2,[r0,s]), Evaluate(R25,[r0,s])));
+P<x> := PolynomialRing(Kr0);
+
+s0:=-( 1/5*(-6*r0 - 4));
+s:=s0;
+t:=r0;
+
+ht:=(2*x^2-t)*(4*t^2*x^4+4*(t^2+t+1)*x^2+1);;
+
+hs:=(4*x^2 + s)*(16*s^4*x^4 + 8*(2*s^4 - 4*s^3 + 5*s^2 - 4*s + 2)*x^2 + 1);
+
+
+IsIsomorphicHyperellipticCurves(ht,hs:geometric:=true);
+
+
+
+
+
+
+Kr<r> :=PolynomialRing(Q);
+Kr0<r0> := ext<Q|r^6 - 99/8*r^5 + 2445/32*r^4 + 75537/512*r^3 + 2445/32*r^2 - 99/8*r + 1>;
+
+Fs<s> := PolynomialRing(Kr0);
+
+Factorization(Gcd(Evaluate(R2,[r0,s]), Evaluate(R25,[r0,s])));
+P<x> := PolynomialRing(Kr0);
+
+s0:=-( 1/3056631552*(-65582592*r0^5 + 771406912*r0^4 - 4469681136*r0^3 -
+        13409838475*r0^2 - 6330483960*r0 + 1741081024));
+s:=s0;
+t:=r0;
+
+ht:=(2*x^2-t)*(4*t^2*x^4+4*(t^2+t+1)*x^2+1);;
+
+hs:=(4*x^2 + s)*(16*s^4*x^4 + 8*(2*s^4 - 4*s^3 + 5*s^2 - 4*s + 2)*x^2 + 1);
+
+
+IsIsomorphicHyperellipticCurves(ht,hs:geometric:=true);
+
+
+
+
+
+Kr<r> :=PolynomialRing(Q);
+Kr0<r0> := ext<Q|r^6 + 33/4*r^5 + 2261/64*r^4 + 14377/512*r^3 + 2261/64*r^2 + 33/4*r + 1>;
+
+Fs<s> := PolynomialRing(Kr0);
+
+Factorization(Gcd(Evaluate(R2,[r0,s]), Evaluate(R25,[r0,s])));
+P<x> := PolynomialRing(Kr0);
+
+s0:=-(1/93296000*(-11120128*r0^5 - 88851328*r0^4 - 372158744*r0^3 -
+        232152719*r0^2 - 429834028*r0 - 37133728));
+s:=s0;
+t:=r0;
+
+ht:=(2*x^2-t)*(4*t^2*x^4+4*(t^2+t+1)*x^2+1);;
+
+hs:=(4*x^2 + s)*(16*s^4*x^4 + 8*(2*s^4 - 4*s^3 + 5*s^2 - 4*s + 2)*x^2 + 1);
+
+
+IsIsomorphicHyperellipticCurves(ht,hs:geometric:=true);

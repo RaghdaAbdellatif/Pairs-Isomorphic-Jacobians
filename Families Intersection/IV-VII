@@ -1,0 +1,51 @@
+Z := Integers();
+
+Q := RationalField();
+
+I := hom< Q -> Z | > ;
+
+F<t,s>:= PolynomialRing(Q,2);
+
+P<x> := PolynomialRing(F);
+
+ht:=(4*x^2 + t)*(16*t^4*x^4 + 8*(2*t^4 - 4*t^3 + 5*t^2 - 4*t + 2)*x^2 + 1);
+
+hs:=16*s^7*x^6 + (s^8 + 16*s^7 - 130*s^6 + 640*s^5 - 2289*s^4 + 6272*s^3 - 13034*s^2
+     + 19208*s - 16807)*x^4 + (s^8 - 8*s^7 + 38*s^6 - 128*s^5 + 327*s^4 - 640*s^3
+     + 910*s^2 - 784*s - 343)*x^2 - 16*s;
+
+j2t  := ScaledIgusaInvariants(ht)[1];
+j4t  := ScaledIgusaInvariants(ht)[2];
+j6t  := ScaledIgusaInvariants(ht)[3];
+j10t := ScaledIgusaInvariants(ht)[5];
+
+j2s  := ScaledIgusaInvariants(hs)[1];
+j4s  := ScaledIgusaInvariants(hs)[2];
+j6s  := ScaledIgusaInvariants(hs)[3];
+j10s := ScaledIgusaInvariants(hs)[5]; 
+
+
+
+R2:=j4t*j2s^2-j4s*j2t^2;
+
+
+R3:=j6t*j2s^3-j6s*j2t^3;
+
+
+R5:=j10t*j2s^5-j10s*j2t^5;
+
+
+
+R23:=j4t^3*j6s^2-j4s^3*j6t^2;
+
+
+
+
+m:=LeadingCoefficient(Resultant(R2,R3,t));
+n:=LeadingCoefficient(Resultant(R2,R5,t));
+Factorization(Gcd(I(m),I(n)));
+
+
+
+Factorization(Gcd(Resultant(R2,R3,t),Resultant(R2,R5,t)));
+

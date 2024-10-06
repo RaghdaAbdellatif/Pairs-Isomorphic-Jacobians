@@ -1,0 +1,94 @@
+Z := Integers();
+
+Q := RationalField();
+
+I := hom< Q -> Z | > ;
+
+F<t,s>:= PolynomialRing(Q,2);
+
+P<x> := PolynomialRing(F);
+
+ht:=(2*x^2-t)*(4*t^2*x^4+4*(t^2+t+1)*x^2+1);;
+
+hs:=16*s^3*x^6 + (s^4 + 16*s^3 - 126*s^2 + 648*s - 2187)*x^4 +
+(s^4 - 8*s^3 + 42*s^2 - 144*s - 243)*x^2 - 16*s;
+
+
+j2t  := ScaledIgusaInvariants(ht)[1];
+j4t  := ScaledIgusaInvariants(ht)[2];
+j6t  := ScaledIgusaInvariants(ht)[3];
+j10t := ScaledIgusaInvariants(ht)[5];
+
+j2s  := ScaledIgusaInvariants(hs)[1];
+j4s  := ScaledIgusaInvariants(hs)[2];
+j6s  := ScaledIgusaInvariants(hs)[3];
+j10s := ScaledIgusaInvariants(hs)[5]; 
+
+
+
+R2:=j4t*j2s^2-j4s*j2t^2;
+
+
+R3:=j6t*j2s^3-j6s*j2t^3;
+
+
+R5:=j10t*j2s^5-j10s*j2t^5;
+
+
+
+R25:=j4t^5*j10s^2-j4s^5*j10t^2;
+
+
+
+
+m:=LeadingCoefficient(Resultant(R2,R25,s));
+n:=LeadingCoefficient(Resultant(R3,R5,s));
+Factorization(Gcd(I(m),I(n)));
+
+
+Factorization(Gcd(Resultant(R2,R25,s),Resultant(R3,R5,s)));
+
+
+
+
+Kr<r> :=PolynomialRing(Q);
+Kr0<r0> := ext<Q|r^4 + 33/8*r^3 + 569/64*r^2 + 33/8*r + 1>;
+
+Fs<s> := PolynomialRing(Kr0);
+
+Factorization(Gcd(Evaluate(R2,[r0,s]), Evaluate(R25,[r0,s])));
+P<x> := PolynomialRing(Kr0);
+
+s0:=-( 1/3640*(-6464*r0^3 - 21032*r0^2 - 52349*r0 - 13640));
+
+
+
+hr0:=(2*x^2-r0)*(4*r0^2*x^4+4*(r0^2+r0+1)*x^2+1);
+
+hs:=16*s0^3*x^6 + (s0^4 + 16*s0^3 - 126*s0^2 + 648*s0 - 2187)*x^4 +
+(s0^4 - 8*s0^3 + 42*s0^2 - 144*s0 - 243)*x^2 - 16*s0;
+
+
+IsIsomorphicHyperellipticCurves(hr0,hs:geometric:=true);
+
+
+Kr<r> :=PolynomialRing(Q);
+Kr0<r0> := ext<Q|r^6 - 33/4*r^5 + 2261/64*r^4 - 14377/512*r^3 + 2261/64*r^2 - 33/4*r + 1>;
+
+Fs<s> := PolynomialRing(Kr0);
+
+Factorization(Gcd(Evaluate(R2,[r0,s]), Evaluate(R25,[r0,s])));
+P<x> := PolynomialRing(Kr0);
+
+s0:=-(1/9329600*(-1158656*r0^5 + 9337728*r0^4 - 41697048*r0^3 + 40036079*r0^2
+        - 92894696*r0 + 29602368));
+
+
+
+hr0:=(2*x^2-r0)*(4*r0^2*x^4+4*(r0^2+r0+1)*x^2+1);
+
+hs:=16*s0^3*x^6 + (s0^4 + 16*s0^3 - 126*s0^2 + 648*s0 - 2187)*x^4 +
+(s0^4 - 8*s0^3 + 42*s0^2 - 144*s0 - 243)*x^2 - 16*s0;
+
+
+IsIsomorphicHyperellipticCurves(hr0,hs:geometric:=true)
