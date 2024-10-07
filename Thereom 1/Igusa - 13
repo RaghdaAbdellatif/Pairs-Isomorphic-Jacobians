@@ -1,8 +1,8 @@
-Z := FiniteField(13);
+F := FiniteField(13);
 
-F<t> := PolynomialRing(Z);
+Rt<t> := PolynomialRing(F);
 
-P<x> := PolynomialRing(F);
+P<x> := PolynomialRing(Rt);
 
 h := 16*t^3*x^6 + (t^4 + 16*t^3 - 126*t^2 + 648*t - 2187)*x^4 +
 (t^4 - 8*t^3 + 42*t^2 - 144*t - 243)*x^2 - 16*t;
@@ -23,31 +23,24 @@ j4m  := ScaledIgusaInvariants(hm)[2];
 j6m  := ScaledIgusaInvariants(hm)[3];
 j10m := ScaledIgusaInvariants(hm)[5];
 
+R<t> := PolynomialRing(F);
+h := hom< Rt -> R | t >;
 
-(j4*j2m^2-j4m*j2^2)/(t*(t^2+27)^3*(t^2+243)*(t^2+3)*(t^4+7*t^2+1));
+R2:=h((j4*j2m^2-j4m*j2^2)/(t*(t^2+27)^3*(t^2+243)*(t^2+3)*(t^4+7*t^2+1)));
 
-(j6*j2m^3-j6m*j2^3)/(t^5*(t^2+27)^3*(t^2+243)*(t^2+3)*(t^4+7*t^2+1));
+R3:=h((j6*j2m^3-j6m*j2^3)/(t^5*(t^2+27)^3*(t^2+243)*(t^2+3)*(t^4+7*t^2+1)));
 
-(j10*j2m^5-j10m*j2^5)/(t^5*(t^2+27)^5*(t^2+243)*(t^2+3)*(t^4+7*t^2+1));
+R5:=h((j10*j2m^5-j10m*j2^5)/(t^5*(t^2+27)^5*(t^2+243)*(t^2+3)*(t^4+7*t^2+1)));
 
-
-R2 := 3*t^16 + 8*t^14 + 10*t^12 + 12*t^10 + 11*t^8 + 12*t^6 + 10*t^4 + 8*t^2 + 3 ;
-
-R3 := 6*t^24 + 5*t^20 + 9*t^18 + 5*t^16 + 4*t^14 + 6*t^12 + 4*t^10 + 5*t^8 + 9*t^6 +
-    5*t^4 + 6;
-
-R5 := 6*t^52 + 7*t^50 + 4*t^48 + 3*t^46 + 8*t^42 + 10*t^40 + 5*t^38 + 7*t^36 + t^34 +
-    4*t^32 + 5*t^30 + 4*t^28 + 4*t^24 + 5*t^22 + 4*t^20 + t^18 + 7*t^16 + 5*t^14
-    + 10*t^12 + 8*t^10 + 3*t^6 + 4*t^4 + 7*t^2 + 6;
 
 
 Gcd(R2,R3);
 Gcd(R2,R5);
 
 
-G<g> := ext<Z| t^2 + 2*t + 12>;
+G<g> := ext<F| t^2 + 2*t + 12>;
 
-F<x> := PolynomialRing(G);
+P<x> := PolynomialRing(G);
 
 
 t := g;
@@ -64,6 +57,15 @@ IsIsomorphicHyperellipticCurves(h,hm);
 ScaledIgusaInvariants(h);
 ScaledIgusaInvariants(hm);
 
-TwistsFromIgusaInvariants([ 12*Z.1 , 12 , 5 , 5 , 3 ]);
+TwistsFromIgusaInvariants([ 12*F.1 , 12 , 5 , 5 , 3 ]);
+
+
+
+
+
+
+
+
+
 
 

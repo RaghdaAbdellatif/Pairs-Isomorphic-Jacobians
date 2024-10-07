@@ -1,8 +1,8 @@
-Z := FiniteField(5);
+F := FiniteField(5);
 
-F<t> := PolynomialRing(Z);
+Rt<t> := PolynomialRing(F);
 
-P<x> := PolynomialRing(F);
+P<x> := PolynomialRing(Rt);
 
 h := 16*t^3*x^6 + (t^4 + 16*t^3 - 126*t^2 + 648*t - 2187)*x^4 +
 (t^4 - 8*t^3 + 42*t^2 - 144*t - 243)*x^2 - 16*t;
@@ -23,25 +23,29 @@ j4m  := ScaledIgusaInvariants(hm)[2];
 j6m  := ScaledIgusaInvariants(hm)[3];
 j10m := ScaledIgusaInvariants(hm)[5];
 
+R<t> := PolynomialRing(F);
+h := hom< Rt -> R | t >;
 
-(j4*j2m^2-j4m*j2^2)/(t*(t^2+27)^3*(t^2+243)*(t^2+3)^5);
+R2:=h((j4*j2m^2-j4m*j2^2)/(t*(t^2+27)^3*(t^2+243)*(t^2+3)^5));
 
-(j6*j2m^3-j6m*j2^3)/(t^5*(t^2+27)^3*(t^2+243)*(t^2+3)^7);
+R3:=h((j6*j2m^3-j6m*j2^3)/(t^5*(t^2+27)^3*(t^2+243)*(t^2+3)^7));
 
-(j10*j2m^5-j10m*j2^5)/(t^5*(t^2+27)^5*(t^2+243)*(t^2+3)^9);
-
-
-R2 := t^12 + 2*t^10 + 2*t^8 + 3*t^6 + 3*t^4 + 2*t^2 + 4 ;
-
-R3 := 3*t^16 + 3*t^14 + t^12 + t^8 + t^4 + 2*t^2 + 3;
-
-R5 := t^40 + 4*t^36 + 4*t^34 + 3*t^32 + 2*t^30 + 2*t^28 + 2*t^24 + 2*t^22 + 2*t^20 +
-    3*t^18 + 2*t^16 + 2*t^12 + 3*t^10 + 3*t^8 + t^6 + 4*t^4 + 1;
+R5:=h((j10*j2m^5-j10m*j2^5)/(t^5*(t^2+27)^5*(t^2+243)*(t^2+3)^9));
 
 
 
 Gcd(R2,R3);
 Gcd(R2,R5);
+
+
+
+
+
+
+
+
+
+
 
 
 
